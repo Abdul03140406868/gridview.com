@@ -1,0 +1,277 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Rajdhani', 'Arial Narrow', sans-serif;
+}
+
+body {
+    background-color: #0a0e17;
+    background-image: radial-gradient(circle at 50% 50%, #1a2a4a 0%, #0a0e17 100%);
+    padding: 15px;
+    min-height: 100vh;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.header h1 {
+    color: #ffcc00;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px rgba(255,204,0,0.5);
+    position: relative;
+    display: inline-block;
+}
+
+.header h1:after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #ff5722, transparent);
+}
+
+.header p {
+    color: #7f8fa4;
+    font-size: 0.9rem;
+}
+
+.tournaments-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.tournament-card {
+    background: linear-gradient(145deg, #121f36 0%, #1a2a4a 100%);
+    border-radius: 12px;
+    padding: 18px;
+    color: white;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.05);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tournament-card:before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to bottom right,
+        rgba(255, 204, 0, 0.1) 0%,
+        rgba(255, 204, 0, 0) 60%
+    );
+    transform: rotate(30deg);
+    pointer-events: none;
+}
+
+.tournament-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+}
+
+.tournament-card h2 {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    color: #ffcc00;
+    position: relative;
+    z-index: 1;
+}
+
+.tournament-card p {
+    margin-bottom: 15px;
+    font-size: 0.8rem;
+    color: #b8c2d1;
+    line-height: 1.4;
+    position: relative;
+    z-index: 1;
+}
+
+.fees {
+    display: block;
+    font-weight: bold;
+    color: #4caf50;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    position: relative;
+    z-index: 1;
+}
+
+.fees:before {
+    content: "Rs.";
+    margin-right: 2px;
+}
+
+.register-btn {
+    background: linear-gradient(135deg, #ff5722 0%, #ff9800 100%);
+    color: white;
+    border: none;
+    padding: 10px 0;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 3px 6px rgba(255, 87, 34, 0.3);
+}
+
+.register-btn:hover {
+    background: linear-gradient(135deg, #e64a19 0%, #f57c00 100%);
+    box-shadow: 0 5px 10px rgba(255, 87, 34, 0.4);
+}
+
+.tournament-card:nth-child(2) {
+    background: linear-gradient(145deg, #1a1a36 0%, #2a2a4a 100%);
+}
+
+.tournament-card:nth-child(3) {
+    background: linear-gradient(145deg, #36121f 0%, #4a1a2a 100%);
+}
+
+.tournament-card:nth-child(4) {
+    background: linear-gradient(145deg, #12361f 0%, #1a4a2a 100%);
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: linear-gradient(145deg, #121f36 0%, #1a2a4a 100%);
+    margin: 10% auto;
+    padding: 25px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.1);
+    position: relative;
+    color: white;
+}
+
+.close-btn {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 1.5rem;
+    color: #ffcc00;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: #ff5722;
+}
+
+.modal-content h2 {
+    color: #ffcc00;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background-color: rgba(0,0,0,0.3);
+    color: white;
+    font-size: 0.9rem;
+}
+
+.form-group input::placeholder {
+    color: #b8c2d1;
+}
+
+.submit-btn {
+    background: linear-gradient(135deg, #4caf50 0%, #8bc34a 100%);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    margin-top: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+}
+
+.submit-btn:hover {
+    background: linear-gradient(135deg, #3d8b40 0%, #7cb342 100%);
+}
+
+
+/* Header Actions Styles */
+.header-actions {
+    text-align: center;
+    margin: 20px auto;
+    max-width: 500px;
+}
+
+.register-team-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #2196F3 0%, #03A9F4 100%);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 10px rgba(33, 150, 243, 0.3);
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.register-team-btn:hover {
+    background: linear-gradient(135deg, #1976D2 0%, #0288D1 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(33, 150, 243, 0.4);
+}
+
+.register-team-btn .icon {
+    font-size: 1.2rem;
+}
+
+/* Make sure this comes after your existing header styles */
+.header {
+    margin-bottom: 10px; /* Reduced from previous value */
+}
